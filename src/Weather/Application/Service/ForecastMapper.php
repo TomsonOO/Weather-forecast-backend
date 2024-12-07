@@ -18,18 +18,19 @@ class ForecastMapper
         $codes = $data['daily']['weathercode'];
         $sun = $data['daily']['sunshine_duration'];
 
-        for ($i = 0; $i < count($dates); $i++) {
+        for ($i = 0; $i < count($dates); ++$i) {
             $date = new \DateTimeImmutable($dates[$i]);
             $energy = $calculator->calculate($sun[$i]);
             $forecasts[] = new DailyForecast(
                 $date,
-                (int)$codes[$i],
-                (float)$minTemps[$i],
-                (float)$maxTemps[$i],
-                (float)$sun[$i],
-                (float)$energy
+                (int) $codes[$i],
+                (float) $minTemps[$i],
+                (float) $maxTemps[$i],
+                (float) $sun[$i],
+                (float) $energy
             );
         }
+
         return $forecasts;
     }
 }

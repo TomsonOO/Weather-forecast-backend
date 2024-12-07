@@ -36,6 +36,7 @@ class Get7DayForecastQueryHandler
                 $forecast->generatedEnergy()
             );
         }
+
         return $dtoList;
     }
 }

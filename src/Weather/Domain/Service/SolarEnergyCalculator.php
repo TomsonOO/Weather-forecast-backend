@@ -6,17 +6,11 @@ namespace App\Weather\Domain\Service;
 
 class SolarEnergyCalculator
 {
-    private float $installationPower;
-    private float $efficiency;
-
-    public function __construct(float $installationPower, float $efficiency)
-    {
-        $this->installationPower = $installationPower;
-        $this->efficiency = $efficiency;
-    }
+    private const INSTALLATION_POWER = 2.5;
+    private const EFFICIENCY = 0.2;
 
     public function calculate(float $sunExposure): float
     {
-        return $this->installationPower * $sunExposure * $this->efficiency;
+        return self::INSTALLATION_POWER * $sunExposure * self::EFFICIENCY;
     }
 }

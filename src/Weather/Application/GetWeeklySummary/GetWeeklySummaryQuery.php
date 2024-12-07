@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Weather\Application\Get7DayForecast;
+namespace App\Weather\Application\GetWeeklySummary;
 
-class Get7DayForecastQuery
+class GetWeeklySummaryQuery
 {
     private float $latitude;
     private float $longitude;
