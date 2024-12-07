@@ -19,6 +19,18 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
+    App\Weather\Domain\Service\SolarEnergyCalculator:
+        arguments:
+            $installationPower: 2.5
+            $efficiency: 0.2
+
+    App\Weather\Application\Service\ForecastMapper: ~
+
+    App\Weather\Application\Get7DayForecast\Get7DayForecastQueryHandler:
+        arguments:
+            $adapter: '@App\Weather\Infrastructure\OpenMeteo\OpenMeteoAdapter'
+            $calculator: '@App\Weather\Domain\Service\SolarEnergyCalculator'
+            $mapper: '@App\Weather\Application\Service\ForecastMapper'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
